@@ -9,11 +9,6 @@ import 'package:syncday/widgets/textfiled.dart';
 
 import '../../widgets/expense_tile.dart';
 
-/// Pure UI screen — static dummy data for now.
-/// Wire this up to ExpenseController (GetX) yourself:
-/// - RxList<ExpenseModel> expenses
-/// - RxDouble totalSpent
-/// - controller.addExpense(), deleteExpense()
 class ExpenseScreen extends StatelessWidget {
   const ExpenseScreen({super.key});
 
@@ -32,7 +27,6 @@ class ExpenseScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Total spent hero card
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(20),
@@ -66,9 +60,7 @@ class ExpenseScreen extends StatelessWidget {
                   ],
                 ),
               ),
-
               const SizedBox(height: 24),
-
               const CustomTextField(hintText: 'Expense title'),
               const SizedBox(height: 12),
               const CustomTextField(
@@ -79,14 +71,9 @@ class ExpenseScreen extends StatelessWidget {
               CustomButton(
                 label: 'Add Expense',
                 icon: Icons.add,
-                onPressed: () {
-                  // TODO: controller.addExpense(title, amount);
-                },
+                onPressed: () {},
               ),
-
               const SizedBox(height: 24),
-
-              // Dummy static list — replace with Obx(() => ListView...)
               const ExpenseTile(title: 'Lunch at Noma', amount: 24.50),
               const ExpenseTile(title: 'Spotify Premium', amount: 9.99),
             ],

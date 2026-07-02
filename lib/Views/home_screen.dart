@@ -11,7 +11,6 @@ import 'package:syncday/widgets/wide_info.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +35,6 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 6),
-              // TODO: replace with a real date via intl / DateTimeHelper
               Text('Tuesday, June 30', style: AppTextStyles.subtitle),
 
               const SizedBox(height: 24),
@@ -73,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                       subtitle: '2 pending',
                       iconStartColor: AppColors.taskIconStart,
                       iconEndColor: AppColors.taskIconEnd,
-                      onTap: () => Get.toNamed(AppRoutes.task),
+                      onTap: () => Get.toNamed(AppPages.task),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -84,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                       subtitle: '\$48.24 total',
                       iconStartColor: AppColors.expenseIconStart,
                       iconEndColor: AppColors.expenseIconStart,
-                      onTap: () => Get.toNamed(AppRoutes.expense),
+                      onTap: () => Get.toNamed(AppPages.expense),
                     ),
                   ),
                 ],
@@ -98,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                 subtitle: 'Partly Cloudy',
                 iconStartColor: AppColors.weatherIconStart,
                 iconEndColor: AppColors.weatherIconEnd,
-                onTap: () => Get.toNamed(AppRoutes.weather),
+                onTap: () => Get.toNamed(AppPages.weather),
               ),
 
               const SizedBox(height: 20),

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:syncday/constansts/app_colors.dart';
 import 'package:syncday/constansts/app_textstyle.dart';
 
-/// Light-grey rounded input field, matches "What needs to be done?"
-/// and "Expense title" / "Amount" fields.
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final TextEditingController? controller;

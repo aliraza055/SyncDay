@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:syncday/Controllers/task_controller.dart';
 import 'package:syncday/constansts/app_colors.dart';
 import 'package:syncday/constansts/app_textstyle.dart';
 import 'package:syncday/constansts/media_queries.dart';
@@ -9,16 +11,15 @@ import 'package:syncday/widgets/app_tile.dart';
 import 'package:syncday/widgets/textfiled.dart';
 
 class TaskScreen extends StatelessWidget {
-  const TaskScreen({super.key});
-
+  TaskScreen({super.key});
+  final TaskController taskCon = Get.put(TaskController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: const CustomAppBar(title: 'Task Manager'),
       body: SafeArea(
-        top: false,
-        child: SingleChildScrollView(
+        child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: context.wp(0.05),
             vertical: 16,
@@ -26,23 +27,53 @@ class TaskScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomTextField(hintText: 'What needs to be done?'),
+              CustomTextField(
+                controller: taskCon.taskContrller.value,
+                hintText: 'What needs to be done?',
+              ),
               const SizedBox(height: 14),
+
+              /// ADD BUTTON
               CustomButton(
                 label: 'Add Task',
                 icon: Icons.add,
-                onPressed: () {},
+                onPressed: () {
+                  final text = taskCon.taskContrller.value.text;
+                  if (text.isNotEmpty) {
+                    taskCon.addTask(text);
+                    taskCon.taskContrller.value.clear();
+                  } else {
+                    print('Enter something please');
+                  }
+                },
               ),
               const SizedBox(height: 24),
 
-              // Dummy static list — replace with Obx(() => ListView...)
-              const TaskTile(title: 'Review project proposal'),
-              const TaskTile(title: 'Call dentist at 3pm', isChecked: true),
-              const TaskTile(title: 'Buy groceries'),
+              /// TASK LIST (ONLY THIS SCROLLS)
+              Expanded(
+                child: Obx(() {
+                  return ListView.builder(
+                    itemCount: taskCon.tasks.length,
+                    itemBuilder: (context, index) {
+                      final task = taskCon.tasks[index];
+                      return TaskTile(
+                        title: task.title, // correct usage
+                        isChecked: task.isDone,
+                        onToggle: () {
+                          taskCon.toggleTask(index);
+                        },
+                        onDelete: () {
+                          taskCon.deleteTask(index);
+                        },
+                      );
+                    },
+                  );
+                }),
+              ),
 
-              const SizedBox(height: 8),
+              /// FOOTER
               Center(
-                child: Text('1 of 3 completed', style: AppTextStyles.subtitle),
+                child: Text('Task Manager', style: AppTextStyles.subtitle),
               ),
             ],
           ),

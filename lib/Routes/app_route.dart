@@ -7,13 +7,12 @@ import 'package:syncday/Views/weather_screen.dart';
 
 /// GetX page list. Add `binding:` to each GetPage once you create
 /// your controllers + bindings (e.g. binding: TaskBinding()).
-class AppPages {
-  AppPages._();
-
+class AppRoute {
+  AppRoute._();
   static final List<GetPage> pages = [
-    GetPage(name: AppRoutes.home, page: () => const HomeScreen()),
-    GetPage(name: AppRoutes.task, page: () => const TaskScreen()),
-    GetPage(name: AppRoutes.expense, page: () => const ExpenseScreen()),
-    GetPage(name: AppRoutes.weather, page: () => const WeatherScreen()),
+    GetPage(name: AppPages.home, page: () => const HomeScreen()),
+    GetPage(name: AppPages.task, page: () => TaskScreen()),
+    GetPage(name: AppPages.expense, page: () => const ExpenseScreen()),
+    GetPage(name: AppPages.weather, page: () => const WeatherScreen()),
   ];
 }

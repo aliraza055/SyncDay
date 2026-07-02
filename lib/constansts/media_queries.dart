@@ -9,6 +9,7 @@ extension MediaQueryHelper on BuildContext {
   double get height => _size.height;
 
   /// Width percentage. e.g. context.wp(0.9) => 90% of screen width
+
   double wp(double percent) => _size.width * percent;
 
   /// Height percentage. e.g. context.hp(0.2) => 20% of screen height

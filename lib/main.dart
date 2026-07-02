@@ -5,6 +5,7 @@ import 'package:syncday/Routes/app_route.dart';
 import 'package:syncday/constansts/app_theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const DailyManagerApp());
 }
 
@@ -17,8 +18,8 @@ class DailyManagerApp extends StatelessWidget {
       title: 'Daily Manager',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: AppRoutes.home,
-      getPages: AppPages.pages,
+      initialRoute: AppPages.home,
+      getPages: AppRoute.pages,
     );
   }
 }

@@ -1,6 +1,6 @@
 /// Route name constants — use these with Get.toNamed(), never hardcode strings.
-abstract class AppRoutes {
-  AppRoutes._();
+abstract class AppPages {
+  AppPages._();
 
   static const String home = '/home';
   static const String task = '/task';
