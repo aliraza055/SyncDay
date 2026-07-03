@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:syncday/Controllers/expense_controller.dart';
 import 'package:syncday/Controllers/home_controller.dart';
 import 'package:syncday/Controllers/task_controller.dart';
+import 'package:syncday/Controllers/weather_controller.dart';
 import 'package:syncday/Routes/app_pages.dart';
 import 'package:syncday/constansts/app_colors.dart';
 import 'package:syncday/constansts/app_textstyle.dart';
@@ -15,6 +16,7 @@ class HomeScreen extends StatelessWidget {
   final expenseC = Get.put(ExpenseController());
   final taskC = Get.put(TaskController());
   final homeC = Get.put(HomeController());
+  final weatherC = Get.put(WeatherController());
   HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
@@ -61,13 +63,22 @@ class HomeScreen extends StatelessWidget {
                   }),
                   SizedBox(width: 12),
                   Expanded(
-                    child: StatCard(label: 'Weather', value: '68°'),
+                    child: Obx(() {
+                      final weather = weatherC.weather.value;
+
+                      if (weather == null) {
+                        return const StatCard(label: 'Weather', value: '--');
+                      }
+                      return StatCard(
+                        label: 'Weather',
+                        value: '${weather.temperature} °C',
+                      );
+                    }),
                   ),
                 ],
               ),
 
               const SizedBox(height: 28),
-
               Text('QUICK ACCESS', style: AppTextStyles.sectionLabel),
               const SizedBox(height: 14),
 

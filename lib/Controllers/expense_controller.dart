@@ -34,6 +34,7 @@ class ExpenseController extends GetxController {
 
   void addTotoal() {
     double sum = 0;
+
     for (var i in expensesList) {
       sum += i.amount;
     }

@@ -11,6 +11,6 @@ class AppRoute {
     GetPage(name: AppPages.home, page: () => HomeScreen()),
     GetPage(name: AppPages.task, page: () => TaskScreen()),
     GetPage(name: AppPages.expense, page: () => ExpenseScreen()),
-    GetPage(name: AppPages.weather, page: () => const WeatherScreen()),
+    GetPage(name: AppPages.weather, page: () => WeatherScreen()),
   ];
 }
