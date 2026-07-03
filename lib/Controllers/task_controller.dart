@@ -6,13 +6,15 @@ class TaskController extends GetxController {
   var tasks = <TaskModel>[].obs;
   var taskContrller = TextEditingController().obs;
 
-  void addTask(String title) {
-    final task = TaskModel(
-      id: DateTime.now().toString(),
-      title: title,
-      isDone: false,
-    );
-    tasks.add(task);
+  void addTask() {
+    if (taskContrller.value.text.isNotEmpty) {
+      final task = TaskModel(
+        id: DateTime.now().toString(),
+        title: taskContrller.value.text,
+        isDone: false,
+      );
+      tasks.add(task);
+    }
   }
 
   void toggleTask(int index) {

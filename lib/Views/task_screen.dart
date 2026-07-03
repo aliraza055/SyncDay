@@ -38,13 +38,7 @@ class TaskScreen extends StatelessWidget {
                 label: 'Add Task',
                 icon: Icons.add,
                 onPressed: () {
-                  final text = taskCon.taskContrller.value.text;
-                  if (text.isNotEmpty) {
-                    taskCon.addTask(text);
-                    taskCon.taskContrller.value.clear();
-                  } else {
-                    print('Enter something please');
-                  }
+                  taskCon.addTask();
                 },
               ),
               const SizedBox(height: 24),

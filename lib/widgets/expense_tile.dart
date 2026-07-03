@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:syncday/constansts/app_colors.dart';
 import 'package:syncday/constansts/app_textstyle.dart';
 
-/// Single row in the Expense Tracker list.
 class ExpenseTile extends StatelessWidget {
   final String title;
   final double amount;
