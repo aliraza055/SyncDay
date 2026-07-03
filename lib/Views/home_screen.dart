@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncday/Controllers/expense_controller.dart';
+import 'package:syncday/Controllers/home_controller.dart';
 import 'package:syncday/Controllers/task_controller.dart';
-
 import 'package:syncday/Routes/app_pages.dart';
 import 'package:syncday/constansts/app_colors.dart';
 import 'package:syncday/constansts/app_textstyle.dart';
@@ -14,6 +14,7 @@ import 'package:syncday/widgets/wide_info.dart';
 class HomeScreen extends StatelessWidget {
   final expenseC = Get.put(ExpenseController());
   final taskC = Get.put(TaskController());
+  final homeC = Get.put(HomeController());
   HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
@@ -33,13 +34,13 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 8),
               Row(
                 children: [
-                  Text('Good Evening', style: AppTextStyles.heading1),
+                  Text(homeC.greeting, style: AppTextStyles.heading1),
                   const SizedBox(width: 8),
                   const Text('👋', style: TextStyle(fontSize: 24)),
                 ],
               ),
               const SizedBox(height: 6),
-              Text('Tuesday, June 30', style: AppTextStyles.subtitle),
+              Text(homeC.formattedDate, style: AppTextStyles.subtitle),
               const SizedBox(height: 24), // Top stat row
               Row(
                 children: [
@@ -100,9 +101,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 12),
-
               WideInfoCard(
                 icon: Icons.wb_sunny_outlined,
                 title: 'Weather',
