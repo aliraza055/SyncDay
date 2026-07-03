@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:syncday/Controllers/expense_controller.dart';
+import 'package:syncday/Controllers/task_controller.dart';
 
 import 'package:syncday/Routes/app_pages.dart';
 import 'package:syncday/constansts/app_colors.dart';
@@ -10,7 +12,9 @@ import 'package:syncday/widgets/quick_acess.dart';
 import 'package:syncday/widgets/wide_info.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final expenseC = Get.put(ExpenseController());
+  final taskC = Get.put(TaskController());
+  HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,19 +40,24 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 6),
               Text('Tuesday, June 30', style: AppTextStyles.subtitle),
-
-              const SizedBox(height: 24),
-
-              // Top stat row
+              const SizedBox(height: 24), // Top stat row
               Row(
-                children: const [
+                children: [
                   Expanded(
-                    child: StatCard(label: 'Tasks left', value: '2'),
+                    child: StatCard(
+                      label: 'Tasks left',
+                      value: '${taskC.getPending}',
+                    ),
                   ),
                   SizedBox(width: 12),
-                  Expanded(
-                    child: StatCard(label: 'Spent today', value: '\$48'),
-                  ),
+                  Obx(() {
+                    return Expanded(
+                      child: StatCard(
+                        label: 'Spent today',
+                        value: '\RS ${expenseC.totalAmount.value}',
+                      ),
+                    );
+                  }),
                   SizedBox(width: 12),
                   Expanded(
                     child: StatCard(label: 'Weather', value: '68°'),
@@ -64,25 +73,29 @@ class HomeScreen extends StatelessWidget {
               // Quick access grid
               Row(
                 children: [
-                  Expanded(
-                    child: QuickAccessCard(
-                      icon: Icons.check_box_outlined,
-                      title: 'Task Manager',
-                      subtitle: '2 pending',
-                      iconStartColor: AppColors.taskIconStart,
-                      iconEndColor: AppColors.taskIconEnd,
-                      onTap: () => Get.toNamed(AppPages.task),
+                  Obx(
+                    () => Expanded(
+                      child: QuickAccessCard(
+                        icon: Icons.check_box_outlined,
+                        title: 'Task Manager',
+                        subtitle: '${taskC.getPending} pending',
+                        iconStartColor: AppColors.taskIconStart,
+                        iconEndColor: AppColors.taskIconEnd,
+                        onTap: () => Get.toNamed(AppPages.task),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 12),
-                  Expanded(
-                    child: QuickAccessCard(
-                      icon: Icons.account_balance_wallet_outlined,
-                      title: 'Expenses',
-                      subtitle: '\$48.24 total',
-                      iconStartColor: AppColors.expenseIconStart,
-                      iconEndColor: AppColors.expenseIconStart,
-                      onTap: () => Get.toNamed(AppPages.expense),
+                  Obx(
+                    () => Expanded(
+                      child: QuickAccessCard(
+                        icon: Icons.account_balance_wallet_outlined,
+                        title: 'Expenses',
+                        subtitle: '\RS ${expenseC.totalAmount.value}',
+                        iconStartColor: AppColors.expenseIconStart,
+                        iconEndColor: AppColors.expenseIconStart,
+                        onTap: () => Get.toNamed(AppPages.expense),
+                      ),
                     ),
                   ),
                 ],

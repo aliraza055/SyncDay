@@ -25,4 +25,8 @@ class TaskController extends GetxController {
   void deleteTask(int index) {
     tasks.removeAt(index);
   }
+
+  int get getPending {
+    return tasks.where((n) => n.isDone == false).length;
+  }
 }

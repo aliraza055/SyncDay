@@ -42,7 +42,7 @@ class ExpenseTile extends StatelessWidget {
           const SizedBox(width: 14),
           Expanded(child: Text(title, style: AppTextStyles.bodyRegular)),
           Text(
-            '\$${amount.toStringAsFixed(2)}',
+            '\RS ${amount.toStringAsFixed(1)}',
             style: AppTextStyles.quickTitle,
           ),
           InkWell(

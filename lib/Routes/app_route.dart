@@ -8,7 +8,7 @@ import 'package:syncday/Views/weather_screen.dart';
 class AppRoute {
   AppRoute._();
   static final List<GetPage> pages = [
-    GetPage(name: AppPages.home, page: () => const HomeScreen()),
+    GetPage(name: AppPages.home, page: () => HomeScreen()),
     GetPage(name: AppPages.task, page: () => TaskScreen()),
     GetPage(name: AppPages.expense, page: () => ExpenseScreen()),
     GetPage(name: AppPages.weather, page: () => const WeatherScreen()),
