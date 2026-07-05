@@ -77,11 +77,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 28),
               Text('QUICK ACCESS', style: AppTextStyles.sectionLabel),
               const SizedBox(height: 14),
-
               // Quick access grid
               Row(
                 children: [
@@ -121,7 +119,6 @@ class HomeScreen extends StatelessWidget {
                 iconEndColor: AppColors.weatherIconEnd,
                 onTap: () => Get.toNamed(AppPages.weather),
               ),
-
               const SizedBox(height: 20),
             ],
           ),
