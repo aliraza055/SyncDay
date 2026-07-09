@@ -19,7 +19,7 @@ class WeatherModel {
       condition: json['weather'][0]['main'],
       humidity: json['main']['humidity'],
       wind: json['wind']['speed'].toDouble(),
-      uvIndex: 0, // OpenWeather free API doesn't give UV directly
+      uvIndex: 0,
     );
   }
 }

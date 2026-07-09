@@ -4,7 +4,6 @@ import 'package:syncday/Controllers/task_controller.dart';
 import 'package:syncday/constansts/app_colors.dart';
 import 'package:syncday/constansts/app_textstyle.dart';
 import 'package:syncday/constansts/media_queries.dart';
-
 import 'package:syncday/widgets/app_bar.dart';
 import 'package:syncday/widgets/app_button.dart';
 import 'package:syncday/widgets/app_tile.dart';

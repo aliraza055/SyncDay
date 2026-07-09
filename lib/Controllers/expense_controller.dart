@@ -12,9 +12,7 @@ class ExpenseController extends GetxController {
   void addExpense() {
     final title = titleC.value.text.trim();
     final amountText = amountC.value.text.trim();
-
     if (title.isEmpty || amountText.isEmpty) return;
-
     final amount = double.tryParse(amountText);
     if (amount == null) return;
 
@@ -27,7 +25,6 @@ class ExpenseController extends GetxController {
 
     expensesList.add(expense);
     addTotoal();
-
     titleC.value.clear();
     amountC.value.clear();
   }

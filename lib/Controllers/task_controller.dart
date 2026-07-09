@@ -7,10 +7,11 @@ class TaskController extends GetxController {
   var taskContrller = TextEditingController().obs;
 
   void addTask() {
+    var titleCon = taskContrller.value.text.trim();
     if (taskContrller.value.text.isNotEmpty) {
       final task = TaskModel(
         id: DateTime.now().toString(),
-        title: taskContrller.value.text,
+        title: titleCon,
         isDone: false,
       );
       tasks.add(task);

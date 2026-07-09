@@ -97,9 +97,6 @@ class ExpenseScreen extends StatelessWidget {
                   );
                 }),
               ),
-
-              // const ExpenseTile(title: 'Lunch at Noma', amount: 24.50),
-              // const ExpenseTile(title: 'Spotify Premium', amount: 9.99),
             ],
           ),
         ),
