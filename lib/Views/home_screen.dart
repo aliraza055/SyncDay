@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header
-              Text('DAILY MANAGER', style: AppTextStyles.overline),
+              Text('Day Sync', style: AppTextStyles.overline),
               const SizedBox(height: 8),
               Row(
                 children: [

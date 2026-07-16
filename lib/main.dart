@@ -19,6 +19,14 @@ class DailyManagerApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       initialRoute: AppPages.home,
       getPages: AppRoute.pages,
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(
+            context,
+          ).copyWith(textScaler: const TextScaler.linear(1.0)),
+          child: child!,
+        );
+      },
     );
   }
 }
